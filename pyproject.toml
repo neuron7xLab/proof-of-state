@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=78.1.1", "wheel>=0.46.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proof-of-state"
+version = "0.1.0"
+description = "Trust-minimized, replayable release-state attestation: hash-chained quality-gate evidence where UNKNOWN never equals PASS."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{name = "neuron7xLab"}]
+keywords = ["supply-chain", "attestation", "provenance", "release-engineering", "evidence", "slsa"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Security",
+]
+# Zero runtime dependencies on 3.11+: the tool's own supply-chain surface is the
+# Python standard library. tomli is pulled only on 3.10 for TOML parsing.
+dependencies = ["tomli>=2,<3; python_version < '3.11'"]
+
+[project.urls]
+Homepage = "https://github.com/neuron7xLab/proof-of-state"
+Repository = "https://github.com/neuron7xLab/proof-of-state"
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.6,<1", "mypy>=1.10,<3"]
+
+[project.scripts]
+pos = "proof_of_state.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests legitimately use assert and spawn trivial subprocesses.
+"tests/**" = ["S101", "S603", "S607"]
+# Enum members named PASS/FAIL with string values trip the hardcoded-password heuristic.
+"src/proof_of_state/models.py" = ["S105"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[[tool.mypy.overrides]]
+# tomli is a 3.10-only fallback dependency, absent from 3.11+ dev environments.
+module = ["tomli"]
+ignore_missing_imports = true

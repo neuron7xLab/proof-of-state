@@ -1,0 +1,20 @@
+# Example gate graph. Each [[gate]] is a command whose exit code is the verdict:
+#   exit 0                -> pass
+#   exit in unknown_exit  -> unknown   (verdict could not be established)
+#   any other exit        -> fail
+# UNKNOWN never rolls up to PASS.
+
+[[gate]]
+name = "tests"
+command = ["python", "-m", "pytest", "-q"]
+timeout_seconds = 600
+
+[[gate]]
+name = "lint"
+command = ["ruff", "check", "src", "tests"]
+# ruff may be absent on a bare host; treat its absence as unknown, never pass.
+unknown_exit_codes = [127]
+
+[[gate]]
+name = "typecheck"
+command = ["python", "-m", "mypy", "src"]
