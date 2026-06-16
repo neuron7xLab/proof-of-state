@@ -1,0 +1,12 @@
+changelog:
+  categories:
+    - title: 🚀 Features
+      labels: [enhancement, feature]
+    - title: 🐛 Fixes
+      labels: [bug, fix]
+    - title: 🔒 Security
+      labels: [security]
+    - title: 🧰 Maintenance
+      labels: [chore, ci, deps, dependencies, documentation]
+    - title: Other Changes
+      labels: ["*"]
