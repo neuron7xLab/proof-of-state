@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "proof-of-state"
+abstract: >-
+  Trust-minimized, replayable release-state attestation: hash-chained quality-gate evidence where UNKNOWN never equals PASS. 
+authors:
+  - family-names: "Vasylenko"
+    given-names: "Yaroslav"
+    email: "neuron7x@ukr.net"
+repository-code: "https://github.com/neuron7xLab/proof-of-state"
+url: "https://github.com/neuron7xLab/proof-of-state"
+license: Apache-2.0
