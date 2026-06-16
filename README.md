@@ -1,5 +1,12 @@
 # Proof-of-State
 
+[![CI](https://img.shields.io/github/check-runs/neuron7xLab/proof-of-state/main?label=CI)](https://github.com/neuron7xLab/proof-of-state/actions)
+[![CodeQL](https://github.com/neuron7xLab/proof-of-state/actions/workflows/codeql.yml/badge.svg)](https://github.com/neuron7xLab/proof-of-state/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/neuron7xLab/proof-of-state/badge)](https://scorecard.dev/viewer/?uri=github.com/neuron7xLab/proof-of-state)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](.github/CONTRIBUTING.md)
+
 **Trust-minimized, replayable release-state attestation.** Existing supply-chain
 tools attest *provenance* — *where* an artifact was built (SLSA, sigstore,
 in-toto). Proof-of-State attests *state* — that a repository's quality gates
